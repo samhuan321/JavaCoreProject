@@ -1,0 +1,63 @@
+create database hotelms
+
+use hotelms
+
+create table Customer (
+	idCustomer int,
+	passCustomer nvarchar(50),
+	nameCustomer nvarchar(50),
+	addressCustomer nvarchar(100),
+	phoneCustomer int,
+	primary key (idCustomer)
+)
+
+create table HotelClerk(
+	idClerk int,
+	passClerk nvarchar(50),
+	nameClerk nvarchar(50),
+	phoneClerk int,
+	primary key (idClerk)
+)
+
+create table AdminHotel(
+	idAdmin int,
+	nameAdmin nvarchar(50),
+	passAdmin nvarchar(100)
+	primary key (idAdmin)
+)
+create table Room(
+	idRoom int,
+	tinhTrang nvarchar(100),
+	primary key (idRoom)
+)
+
+
+Create table BookingRoom
+(
+	idCustomer int,
+	idRoom int,
+	dateBooking varchar(30),
+	FOREIGN KEY (idCustomer) REFERENCES Customer(idCustomer),
+	FOREIGN KEY (idRoom) REFERENCES Room(idRoom),
+	primary key(idCustomer,idRoom)
+)
+
+
+insert into AdminHotel values (1,'abc','A')
+
+insert into Customer values (1,'abc','Customer A','Dia chi A', 123213123)
+
+insert into HotelClerk values (1,'abc','Customer A', 123213123)
+insert into HotelClerk values (123,'123','Clerk A', 123213123)
+
+insert into Room values (1,'Con trong')
+insert into Room values (2,'Da dat')
+insert into Room values (3,'Con trong')
+insert into Room values (4,'Con trong')
+insert into Room values (5,'Da dat')
+insert into Room values (6,'Con trong')
+insert into Room values (7,'Con trong')
+insert into Room values (8,'Da dat')
+insert into Room values (9,'Con trong')
+
+SELECT * FROM Room WHERE tinhTrang = 'Con trong'
